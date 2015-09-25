@@ -1,0 +1,5 @@
+translate/translate.py domain.pddl problem.pddl
+
+preprocess/preprocess < OUTPUT.SAS
+
+fast-downward.py output --search "astar(lmcut())"

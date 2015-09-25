@@ -214,10 +214,134 @@ int main()
 			f2<<"(HORIZONTAL ?car-id)"<<endl;
 			f2<<"(VERTICAL ?car-id)"<<endl;
 		f2<<")"<<endl;
+
+		//action starts
+		f2<<"(:action forMoveX"<<endl;
+			f2<<":parameters ( "<<endl;
+				f2<<"?carId ";
+				f2<<"?blockFrontOld ";
+				f2<<"?blockFrontNew ";
+				f2<<"?blockBackOld ";
+				f2<<"?blockBackNew"<<endl;
+			f2<<")"<<endl;
+
+
+			f2<<":precondition"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(CAR ?carId)"<<endl;
+					f2<<"(HORIZONTAL ?carId)"<<endl;
+					f2<<"(BLOCK ?blockFrontOld) (BLOCK ?blockFrontNew) (BLOCK ?blockBackOld) (BLOCK ?blockBackNew)"<<endl;
+					f2<<"(CONNECTEDH ?blockFrontOld ?blockFrontNew) (CONNECTEDH ?blockBackOld ?blockBackOld)"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontOld) (BACKEND ?carId ?blockBackOld)"<<endl;
+					f2<<"(EMPTY ?blockFrontNew)"<<endl;
+			f2<<")"<<endl;
+
+
+			f2<<":effect"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(EMPTY ?blockBackOld)"<<endl;
+					f2<<"(not (EMPTY ?blockFrontNew))"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontNew) (BACKEND ?carId ?blockBackNew)"<<endl;
+					f2<<"(not (FRONTEND ?carId ?blockFrontOld)) (not (BACKEND ?carId ?blockBackOld))"<<endl;
+			f2<<")"<<endl;
+		f2<<")"<<endl; // action ends
+
+
+
+		//action starts
+		f2<<"(:action backMoveX"<<endl;
+			f2<<":parameters ( "<<endl;
+				f2<<"?carId ";
+				f2<<"?blockFrontOld ";
+				f2<<"?blockFrontNew ";
+				f2<<"?blockBackOld ";
+				f2<<"?blockBackNew"<<endl;
+			f2<<")"<<endl;
+
+			f2<<":precondition"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(CAR ?carId)"<<endl;
+					f2<<"(HORIZONTAL ?carId)"<<endl;
+					f2<<"(BLOCK ?blockFrontOld) (BLOCK ?blockFrontNew) (BLOCK ?blockBackOld) (BLOCK ?blockBackNew)"<<endl;
+					f2<<"(CONNECTEDH ?blockFrontOld ?blockFrontNew) (CONNECTEDH ?blockBackOld ?blockBackOld)"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontOld) (BACKEND ?carId ?blockBackOld)"<<endl;
+					f2<<"(EMPTY ?blockBackNew)"<<endl;
+			f2<<")"<<endl;
+
+
+			f2<<":effect"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(EMPTY ?blockFrontOld)"<<endl;
+					f2<<"(not (EMPTY ?blockBackNew))"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontNew) (BACKEND ?carId ?blockBackNew)"<<endl;
+					f2<<"(not (FRONTEND ?carId ?blockFrontOld)) (not (BACKEND ?carId ?blockBackOld))"<<endl;
+			f2<<")"<<endl;
+		f2<<")"<<endl; // action ends
+
+
+
+		//action starts
+		f2<<"(:action forMoveY"<<endl;
+			f2<<":parameters ( "<<endl;
+				f2<<"?carId ";
+				f2<<"?blockFrontOld ";
+				f2<<"?blockFrontNew ";
+				f2<<"?blockBackOld ";
+				f2<<"?blockBackNew"<<endl;
+			f2<<")"<<endl;
+
+
+			f2<<":precondition"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(CAR ?carId)"<<endl;
+					f2<<"(VERTICAL ?carId)"<<endl;
+					f2<<"(BLOCK ?blockFrontOld) (BLOCK ?blockFrontNew) (BLOCK ?blockBackOld) (BLOCK ?blockBackNew)"<<endl;
+					f2<<"(CONNECTEDH ?blockFrontOld ?blockFrontNew) (CONNECTEDH ?blockBackOld ?blockBackOld)"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontOld) (BACKEND ?carId ?blockBackOld)"<<endl;
+					f2<<"(EMPTY ?blockFrontNew)"<<endl;
+			f2<<")"<<endl;
+
+
+			f2<<":effect"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(EMPTY ?blockBackOld)"<<endl;
+					f2<<"(not (EMPTY ?blockFrontNew))"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontNew) (BACKEND ?carId ?blockBackNew)"<<endl;
+					f2<<"(not (FRONTEND ?carId ?blockFrontOld)) (not (BACKEND ?carId ?blockBackOld))"<<endl;
+			f2<<")"<<endl;
+		f2<<")"<<endl; // action ends
+
+
+
+		//action starts
+		f2<<"(:action backMoveY"<<endl;
+			f2<<":parameters ( "<<endl;
+				f2<<"?carId ";
+				f2<<"?blockFrontOld ";
+				f2<<"?blockFrontNew ";
+				f2<<"?blockBackOld ";
+				f2<<"?blockBackNew"<<endl;
+			f2<<")"<<endl;
+
+			f2<<":precondition"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(CAR ?carId)"<<endl;
+					f2<<"(VERTICAL ?carId)"<<endl;
+					f2<<"(BLOCK ?blockFrontOld) (BLOCK ?blockFrontNew) (BLOCK ?blockBackOld) (BLOCK ?blockBackNew)"<<endl;
+					f2<<"(CONNECTEDH ?blockFrontOld ?blockFrontNew) (CONNECTEDH ?blockBackOld ?blockBackOld)"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontOld) (BACKEND ?carId ?blockBackOld)"<<endl;
+					f2<<"(EMPTY ?blockBackNew)"<<endl;
+			f2<<")"<<endl;
+
+			f2<<":effect"<<endl;
+				f2<<"(and"<<endl;
+					f2<<"(EMPTY ?blockFrontOld)"<<endl;
+					f2<<"(not (EMPTY ?blockBackNew))"<<endl;
+					f2<<"(FRONTEND ?carId ?blockFrontNew) (BACKEND ?carId ?blockBackNew)"<<endl;
+					f2<<"(not (FRONTEND ?carId ?blockFrontOld)) (not (BACKEND ?carId ?blockBackOld))"<<endl;
+			f2<<")"<<endl;
+		f2<<")"<<endl; // action ends
 	f2<<")"<<endl;
-
-
-
 	f2.close();
 
 
